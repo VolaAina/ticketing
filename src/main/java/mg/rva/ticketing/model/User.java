@@ -1,9 +1,16 @@
 package mg.rva.ticketing.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "user")
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class User {
 
     @Id
@@ -12,46 +19,11 @@ public class User {
     private int id;
 
     @Column(name = "username")
+    @NonNull
     private String username;
 
     @Column(name = "email")
+    @NonNull
     private String email;
 
-    public User() {
-    }
-
-    public User(String username, String email) {
-        this.username = username;
-        this.email = email;
-    }
-
-    public User(int id, String username, String email) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

@@ -1,9 +1,16 @@
 package mg.rva.ticketing.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "ticket")
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Ticket {
 
     @Id
@@ -12,9 +19,11 @@ public class Ticket {
     private int id;
 
     @Column(name = "title")
+    @NonNull
     private String title;
 
     @Column(name = "description")
+    @NonNull
     private String description;
 
     @ManyToOne
@@ -22,62 +31,8 @@ public class Ticket {
     private User assignedUser;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    @NonNull
     private Status status;
 
-    public Ticket() {
-    }
-
-    public Ticket(String title, String description, Status status) {
-        this.title = title;
-        this.description = description;
-        this.status = status;
-    }
-
-    public Ticket(int id, String title, String description, User assignedUser, Status status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.assignedUser = assignedUser;
-        this.status = status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public User getAssignedUser() {
-        return assignedUser;
-    }
-
-    public void setAssignedUser(User assignedUser) {
-        this.assignedUser = assignedUser;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }
